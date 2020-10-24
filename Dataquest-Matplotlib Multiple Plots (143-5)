@@ -1,0 +1,30 @@
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+
+ax1 = fig.add_subplot(2,1,1)
+ax2 = fig.add_subplot(2,1,2)
+
+ax1.plot(unrate[0:12]['DATE'],unrate[0:12]['VALUE'])
+ax2.plot(unrate[12:23]['DATE'],unrate[12:23]['VALUE'])
+
+## tight_layout on its own adjusts the spacing among subplots;
+## the h_pad parameter controls the degree of spacing
+fig.tight_layout(h_pad=8)
+
+## the suptitle method addda title for the whole figure
+fig.suptitle('Monthly Unemployment Rates, 1948-1949')
+
+## the subplots_adjust method adds spacing between the figure
+## title and the subplots area
+plt.subplots_adjust(top=0.85)
+
+## you can use a for loop to adjust the same aspects of all 
+## subplots simultaneously
+for ax in fig.axes:
+    plt.sca(ax)
+    plt.xticks(rotation=90)
+    plt.xlabel('Month')
+    plt.ylabel('Unemployment Rate')
+
+plt.show()
